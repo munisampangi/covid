@@ -124,16 +124,16 @@ app.get('/districts/:districtId/', logger, async (request, response) => {
   const getquery = `select * from district where district_id=${districtId};`
 
   const dbuser = await db.get(getquery)
-  const value = (dboject) => {
-    return{
-    districtId : dboject.district_id,
-      districtName : dboject.district_name,
-      stateId : dboject.state_id,
-      cases : dboject.cases,
-      cured : dboject.cured,
-      active : dboject.active,
-      deaths : dboject.deaths
-      }
+  const value = dboject => {
+    return {
+      districtId: dboject.district_id,
+      districtName: dboject.district_name,
+      stateId: dboject.state_id,
+      cases: dboject.cases,
+      cured: dboject.cured,
+      active: dboject.active,
+      deaths: dboject.deaths,
+    }
   }
   response.send(value(dboject))
 })
